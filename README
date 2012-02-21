@@ -1,0 +1,20 @@
+1. Intro
+
+a tcp server with simple protobuf support
+
+2. Build
+
+    make deps & make
+
+3. Run
+
+   erl -pa ebin deps/protobuffs/ebin
+   application:start(eproto_server).
+
+4. Todo
+
+   Add Release Handling;
+   Add ets/mnesia/bitcask support
+
+
+
