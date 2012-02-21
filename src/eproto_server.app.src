@@ -1,0 +1,13 @@
+{application, eproto_server,
+ [
+  {description, "tcp server with protobuf support"},
+  {vsn, "1"},
+  {id, "eproto_server"},
+  {registered, [tcp_server_sup, tcp_listener_sup, eproto_server_sup]},
+  {applications, [
+                  kernel,
+                  stdlib
+                 ]},
+  {mod, {eproto_server_app, []}},
+  {env, []}
+ ]}.
