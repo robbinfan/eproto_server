@@ -15,6 +15,7 @@ a tcp server with simple protobuf support
 
    Add Release Handling;
    Add ets/mnesia/bitcask support
+   Add Test
 
 
 
