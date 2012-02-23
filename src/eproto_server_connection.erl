@@ -99,6 +99,6 @@ handle_input(handshake, <<_Id:64, _Cmd:16, Length:16>>, State) ->
 
 handle_input(pkg_body, Data, State) ->
     Result = msg_pb:decode_collecttweet(Data),
-    io:format("recv data, uin is ~p~n", [Result#collecttweet.uin]),
-    recvloop(switch_callback(State#v1{buf_len = 0}, handshake, 12)).
+    lists:foreach(fun(I) -> eproto_server_storage:add_record({Result#collecttweet.uin, I#collecttweetinfo.tweet_id}) end, Result#collecttweet.collect_tweet_info),
+    recvloop(switch_callback(State, handshake, 12)).
 

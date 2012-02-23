@@ -8,6 +8,7 @@
 
 start() ->
     start_listener(),
+    start_storage(),
     start_server().
 
 start_listener() ->
@@ -26,6 +27,9 @@ start_listener() ->
             {eproto_server, tcp_listener_stopped, []},
             {eproto_server, start_client, []},
             Label]).
+
+start_storage() ->
+    eproto_server_storage:start_link().
 
 start_server() ->
     eproto_server_sup:start_link({eproto_server_connection, start_link, []}).
